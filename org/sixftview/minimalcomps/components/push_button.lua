@@ -32,81 +32,52 @@
  --]]
 module(..., package.seeall)
 
-function new(xpos, ypos, label, checked)
+function new(xpos, ypos, label)
 	local group = require("org.sixftview.minimalcomps.components.component").new(xpos, ypos)
-	
 	if label == nil then label = "" end
-	if checked == nil then checked = false end
 	
-	group.selected = checked
-	group.groupName = "defaultGroupName"
-	group.label = label
+	local background = display.newRect(0,0,100, 30)
+	background:setReferencePoint(display.TopLeftReferencePoint)
+	background.alpha = 0
+	background:setFillColor(255,255,255)
+	background.strokeWidth = 1
+	background:setStrokeColor(102, 102, 102)
+	group:insert(background)
 	
-	local box = display.newCircle(10,10,10)
-	box:setFillColor(169, 169, 169)
-	group:insert(box)
+	local txt_label = display.newText(label, 0,0, "PF Ronda Seven", 15)
+	txt_label.alpha = 0
+	txt_label:setTextColor(102, 102, 102)
+	group:insert(txt_label)
 	
-	local inner_box = display.newCircle(10,10,5)
-	inner_box:setFillColor(255, 255, 255)
-	if group.selected == false then inner_box.alpha = 0 end
-	
-	group:insert(inner_box)
-	
-	local box_width = box.width
-	local box_height = box.height
-	
-	local label = display.newText(group.label, 0,0, "PF Ronda Seven", 15)
-	label:setTextColor(102, 102, 102)
-	label.alpha = 0
-	label:setReferencePoint(display.CenterReferencePoint)
-	
-	local function labelTimer(event)
-		label.x = (box.x + (label.width * 0.5)) + 25 
-		label.y = box.y - (label.height * 0.1)
-		if label.alpha == 0 then label.alpha = 1 end
+	--you have to wait for text to render before you can set x,y, width, height stuff
+	local function onTimer(event)
+		local bn_width = txt_label.width + 20
+		local bn_height = txt_label.height + 5
+		
+		if bn_width <= 20 then bn_width = 100 end
+		if bn_height <= 5 then bn_height = 30 end
+		
+		background.width, background.height = bn_width, bn_height
+		background:setReferencePoint(display.TopLeftReferencePoint)
+		background.x = 0
+		background.y = 0
+		background.alpha = 1
+		
+		txt_label.alpha = 1
+		txt_label:setReferencePoint(display.TopLeftReferencePoint)
+		txt_label.x = (bn_width * 0.5) - ((txt_label.width * 0.5) -2.5)
 	end
-	
-	group:insert(label)
-	timer.performWithDelay(100, labelTimer, 1)
+	timer.performWithDelay(100, onTimer, 1)
 	
 	local function onTouch(event)
-		if event.phase == "ended" then
-			if group.selected == true then
-				group.selected = false
-				inner_box.alpha = 0
-			else
-				group.selected = true
-				inner_box.alpha = 1
-			end
-
-			local e = {name="onSelectedButton", value=group.selected, target=group }
-			group:dispatchEvent(e)
+		if event.phase == "began" then
+			background:setFillColor(238, 238, 238)
+		elseif event.phase == "ended" then
+			background:setFillColor(255,255,255)
 		end
-	end
-	
-	function group.setLabelColor(R,G,B,A)
-		if A == nil then A = 255 end
-		label:setTextColor(R,G,B,A)
-	end
-	
-	function group.setLabelText(value)
-		label.alpha = 0
-		label.text = value
-		label:setReferencePoint(display.CenterReferencePoint)
-		timer.performWithDelay(100, labelTimer, 1)
-	end
-	
-	function group.setSelected(selected)
-		if selected == true then
-			inner_box.alpha = 1
-		else
-			inner_box.alpha = 0
-		end
-		group.selected = selected
 	end
 	
 	group:addEventListener("touch", onTouch)
-
+	
 	return group
 end
-

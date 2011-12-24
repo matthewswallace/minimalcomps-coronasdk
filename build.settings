@@ -16,7 +16,7 @@ settings = {
 		{
 			UIAppFonts = 
             {
-				"pf_ronda_seven.tiff",
+				"pf_ronda_seven.ttf",
             },
 			UIStatusBarHidden=true,
 		},

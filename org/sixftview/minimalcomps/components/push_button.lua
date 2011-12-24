@@ -46,7 +46,7 @@ function new(xpos, ypos, label)
 	
 	local boarder
 	
-	local txt_label = display.newText(label, 0,0, "PF Ronda Seven", 15)
+	local txt_label = display.newText(label, 0,0, "PFRondaSeven", 15)
 	txt_label.alpha = 0
 	txt_label:setTextColor(102, 102, 102)
 	group:insert(txt_label)

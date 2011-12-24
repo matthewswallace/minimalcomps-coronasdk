@@ -55,7 +55,7 @@ function new(xpos, ypos, label, checked)
 	local box_width = box.width
 	local box_height = box.height
 	
-	local label = display.newText(group.label, 0,0, "PF Ronda Seven", 15)
+	local label = display.newText(group.label, 0,0, "PFRondaSeven", 15)
 	label:setTextColor(102, 102, 102)
 	label.alpha = 0
 	label:setReferencePoint(display.CenterReferencePoint)

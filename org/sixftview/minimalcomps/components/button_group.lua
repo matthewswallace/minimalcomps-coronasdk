@@ -43,7 +43,7 @@ module(..., package.seeall)
 
 function new(buttons, default_index)
 	
-	local button_group = {}
+	local button_group = display.newGroup()
 	
 	if buttons == nil then buttons = {} end
 	button_group.buttons = buttons
@@ -64,6 +64,9 @@ function new(buttons, default_index)
 				cur_button.setSelected(false)
 			end
 		end
+		
+		local e = {name="selectionChanged", value=button_group.selected_index}
+		button_group:dispatchEvent(e)
 	end
 	
 	for i=1, table.getn(button_group.buttons) do

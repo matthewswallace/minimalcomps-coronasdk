@@ -44,6 +44,8 @@ function new(xpos, ypos, label)
 	background:setStrokeColor(102, 102, 102)
 	group:insert(background)
 	
+	local boarder
+	
 	local txt_label = display.newText(label, 0,0, "PF Ronda Seven", 15)
 	txt_label.alpha = 0
 	txt_label:setTextColor(102, 102, 102)
@@ -63,6 +65,15 @@ function new(xpos, ypos, label)
 		background.y = 0
 		background.alpha = 1
 		
+		boarder = display.newLine(background.x + 2, 
+									background.y + background.height -1,
+									background.x + 2, background.y + 2)
+		boarder:append(background.x + background.width - 1, background.y + 2)
+		boarder:setColor(102, 102, 102)
+		boarder.alpha = 0
+		boarder.width = 1
+		group:insert(boarder)
+		
 		txt_label.alpha = 1
 		txt_label:setReferencePoint(display.TopLeftReferencePoint)
 		txt_label.x = (bn_width * 0.5) - ((txt_label.width * 0.5) -2.5)
@@ -72,8 +83,10 @@ function new(xpos, ypos, label)
 	local function onTouch(event)
 		if event.phase == "began" then
 			background:setFillColor(238, 238, 238)
+			boarder.alpha = 1
 		elseif event.phase == "ended" then
 			background:setFillColor(255,255,255)
+			boarder.alpha = 0
 		end
 	end
 	

@@ -7,5 +7,5 @@ The goal would be to match features as close to the original lib but I would lik
 
 This is an alpha project of course at this point and I will be building most components as I need them. Feel free to do the same. The CoronaSDK has a lack of components for building basic UI and it would be great to have a complete set thats customizable.
 
-## Questions or thought?
+## Questions or thoughts?
 Send me a github message or hit me up on twitter http://twitter.com/matthewswallace

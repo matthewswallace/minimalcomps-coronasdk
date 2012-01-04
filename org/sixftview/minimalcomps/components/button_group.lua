@@ -39,9 +39,9 @@ will manage wich one is selected for you.
 this is a bit different than the AS3 version because 
 lua doesn't allow static methods and variables.
 --]]
-module(..., package.seeall)
+ButtonGroup = {}
 
-function new(buttons, default_index)
+function ButtonGroup:new(buttons, default_index)
 	
 	local button_group = display.newGroup()
 	
@@ -79,3 +79,5 @@ function new(buttons, default_index)
 	
 	return button_group
 end
+
+return ButtonGroup

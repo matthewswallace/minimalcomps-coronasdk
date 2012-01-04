@@ -30,9 +30,9 @@
  * Components with text make use of the font PF Ronda Seven by Yuusuke Kamiyamane
  * This is a free font obtained from http://www.dafont.com/pf-ronda-seven.font
  --]]
-module(..., package.seeall)
+Component = {}
 
-function new(xpos, ypos)
+function Component:new(xpos, ypos)
 	if xpos == nil then xpos = 0 end
 	if ypos == nil then ypos = 0 end
 	

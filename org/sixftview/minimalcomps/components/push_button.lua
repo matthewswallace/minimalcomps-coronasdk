@@ -30,10 +30,10 @@
  * Components with text make use of the font PF Ronda Seven by Yuusuke Kamiyamane
  * This is a free font obtained from http://www.dafont.com/pf-ronda-seven.font
  --]]
-module(..., package.seeall)
+PushButton = {}
 
-function new(xpos, ypos, label)
-	local group = require("org.sixftview.minimalcomps.components.component").new(xpos, ypos)
+function PushButton:new(xpos, ypos, label)
+	local group = require("org.sixftview.minimalcomps.components.component"):new(xpos, ypos)
 	if label == nil then label = "" end
 	
 	local background = display.newRect(0,0,100, 30)
@@ -94,3 +94,5 @@ function new(xpos, ypos, label)
 	
 	return group
 end
+
+return PushButton

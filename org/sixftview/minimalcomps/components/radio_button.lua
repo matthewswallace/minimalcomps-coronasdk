@@ -30,10 +30,10 @@
  * Components with text make use of the font PF Ronda Seven by Yuusuke Kamiyamane
  * This is a free font obtained from http://www.dafont.com/pf-ronda-seven.font
  --]]
-module(..., package.seeall)
+RadioButton = {}
 
-function new(xpos, ypos, label, checked)
-	local group = require("org.sixftview.minimalcomps.components.component").new(xpos, ypos)
+function RadioButton:new(xpos, ypos, label, checked)
+	local group = require("org.sixftview.minimalcomps.components.component"):new(xpos, ypos)
 	
 	if label == nil then label = "" end
 	if checked == nil then checked = false end
@@ -110,3 +110,4 @@ function new(xpos, ypos, label, checked)
 	return group
 end
 
+return RadioButton

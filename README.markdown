@@ -1,7 +1,7 @@
 # Minimalcomps for Corona SDK
 
 This is an attempt to port the Minimalcomps UI lib by Keith Peters to use with Corona SDK.
-Anyone that would like to contribute is welcome I would just ask that you follow the suggested OOP for Lua in this article by Darren Osadchuk http://bit.ly/uTJi4k in order to use some sort of basic inheritance.
+Anyone that would like to contribute is welcome I would just ask that you follow the suggested OOP for Lua in this article by Jesse Warden http://bit.ly/yWMKmd in order to use some sort of basic inheritance.
 
 The goal would be to match features as close to the original lib but I would like to add the ability to skin the components a bit as well. Maybe some way of pointing a component to a directory of assets to use for it's skin?
 
